@@ -3,6 +3,9 @@ strInput = input('Enter a string: ')
 strInputLength = len(strInput)
 strOutput = ""
 
+if strInput == "":
+    print("Empty")
+
 for i in range(strInputLength):
     if strInput[i].isupper():
         strOutput = strOutput + strInput[i].lower()

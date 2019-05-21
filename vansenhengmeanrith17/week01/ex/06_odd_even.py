@@ -1,20 +1,22 @@
 #Getting Input
-number = input('Enter a number to check whether it is odd or even: ')
 
 #Checking Condition
-if number.isdigit():
-    number = int(number)
-    if number % 2 == 0:
-        print(str(number) + ' is Even')
+while True:
+    getInput = input('Enter a number: ')
+    if getInput.isdigit():
+        getInput = int(getInput)
+        if getInput % 2 == 0:
+            print(str(getInput) + ' is EVEN')
+            getInput = str(getInput)
+        else:
+            print(str(getInput) + ' is ODD')
+    elif getInput == 'EXIT':
+        exit() #Exit Function
     else:
-        print(str(number) + 'Is Odd')
-elif number == 'EXIT' or number == 'exit':
-    exit() #Exit Function
-else:
-    print('Invalid Input')
+        print(getInput+" is not a valid number.")
 
-# number = int(input('Enter a number to check whether it is odd or even: '))
-# if number % 2 == 0:
-#         print(str(number) + ' is Even')
+# getInput = int(input('Enter a getInput to check whether it is odd or even: '))
+# if getInput % 2 == 0:
+#         print(str(getInput) + ' is Even')
 # else:
-#     print(str(number) + ' is Odd')
+#     print(str(getInput) + ' is Odd')

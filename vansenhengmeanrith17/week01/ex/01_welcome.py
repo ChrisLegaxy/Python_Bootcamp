@@ -1,2 +1,2 @@
 #Display
-print('Welcome to Kirirom')
+print('Welcome to Kirirom!')

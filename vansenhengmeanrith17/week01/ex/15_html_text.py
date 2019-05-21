@@ -2,7 +2,7 @@
 htmlText = []
 
 while 1: 
-    strInput = input('Enter a title: ')
+    strInput = input('Enter a string: ')
 
     if strInput == 'Generate':
         for text in htmlText:

@@ -1,9 +1,9 @@
-strInput = input('Enter a string: ')
+strInput = input('Enter your secret message: ')
 strInputLength = len(strInput)
 strOutput = ""
 
 if strInput == "":
-    print('Nothing to decode.')
+    print('Nothing to encode.')
     exit()
 
 for i in range(strInputLength):
@@ -28,7 +28,7 @@ for i in range(strInputLength):
     else:
         strAscii = asciiChar
     
-    print(asciiChar)
-    print(strAscii)
+    # print(asciiChar)
+    # print(strAscii)
     strOutput = strOutput + chr(strAscii)
 print(strOutput)

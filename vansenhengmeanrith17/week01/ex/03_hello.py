@@ -5,7 +5,12 @@
 #     print('Hello World\n')
 #     x += 1
 
-n = int(input('Enter the number of time you want to display Hello World!: '))
+n = input('Enter a number: ')
+
+#Check if the input is empty
+if n == "":
+    print('Nothing to display')
+else:
 #For Loop
-for i in range(n):
-    print('Hello World'+str(i))
+    for i in range(int(n)):
+        print('Hello World!')

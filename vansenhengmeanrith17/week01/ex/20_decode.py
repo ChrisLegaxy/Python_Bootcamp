@@ -1,4 +1,4 @@
-strInput = input('Enter a string: ')
+strInput = input('Enter your encrypted message: ')
 strInputLength = len(strInput)
 strOutput = ""
 
@@ -28,6 +28,6 @@ for i in range(strInputLength):
     else:
         strAscii = asciiChar
     
-    print(strAscii)
+    # print(strAscii)
     strOutput = strOutput + chr(strAscii)
 print(strOutput)
