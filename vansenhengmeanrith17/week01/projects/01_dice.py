@@ -1,3 +1,12 @@
+""" 
+    PROJECT 01  : Dice
+    Author      : Vansen Hengmeanrith AKA Chris
+    Email       : vansenhengmeanrith17@kit.edu.kh
+    Created     : 21 May 2019
+    Instructor  : Kevin Sabbe
+    Language    : Python
+"""
+
 import random
 
 # Constant
@@ -7,10 +16,13 @@ INTRO_MESSAGE = "Welcome to the dices games!"
 diceResult = 0
 i = 0
 
+# Declare forever loop(s)
+foreverLoop_One = True
+
 print(INTRO_MESSAGE)
 
 # The loop will go on until the desire input is given
-while True:
+while foreverLoop_One :
     getInput = input("Enter the number of dices you want to roll: ")
     # Check if the input is empty or a character
     if getInput == "" or getInput.isdigit() == False:
@@ -20,7 +32,7 @@ while True:
         print("USAGE: The number must be between 1 and 8")
     # If none of the conditions meet the loop will break and go to the next statement
     else:
-        break
+        foreverLoop_One = False
 
 # While loop
 while i < int(getInput):
