@@ -47,7 +47,7 @@ while foreverLoop_One :
                 foreverLoop_Two = False
             else:
                 print("Rate is incorrect, try again.")
-            
+                
     # elif inputAmount.isdigit() == False or int(inputAmount) < 0 :
     else :
         print("Number is incorrect, try again.")

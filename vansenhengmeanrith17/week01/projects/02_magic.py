@@ -64,7 +64,3 @@ while foreverLoop_One :
     elif int(guessTheNumberInput) < magicNumber :
         count +=1
         guessTheNumberInput = input("Too low, try again!\n>> ")
-
-    
-
-
