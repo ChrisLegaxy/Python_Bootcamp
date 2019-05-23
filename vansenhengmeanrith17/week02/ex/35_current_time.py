@@ -22,6 +22,6 @@ import datetime
 def current_time():
     return str(datetime.datetime.today().strftime("%H:%M:%S"))
     
-# Display
+# Display and function call
 print("current_time()")
 print(">> ",current_time())

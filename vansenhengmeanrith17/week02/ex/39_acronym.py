@@ -20,12 +20,18 @@ listOfWords = ["world", "wide", "web"]
 
 # Defining functions
 def acronym(listOfWords) :
+    # Declaring an empty acronym list
     listOfAcronym = []
+    # Check if the list of words is empty
     if not listOfWords:
         return []
+
+    # Iterate through each element, get the first letter of every words then covert to upper case then append it 
     for i in listOfWords:
         listOfAcronym.append(str(i[0]).upper())
+    # Return the list of acronyms
     return listOfAcronym
 
+# Display and function call
 print("acronym({})".format(listOfWords))
-print(acronym(listOfWords))
+print(">>",acronym(listOfWords))

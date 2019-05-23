@@ -12,15 +12,18 @@
         ❖ split
 """
 # Declare variable
+strInput = "Hello! It’s me again!"
 
 # Defining functions
 def fun_split(strInput) :
-    # Return list
+    # Check if the strInput is an empty string
     if strInput=="" :
         return list()
     else:
+        # Return list
         return list(strInput.split(' '))
 
 # Display and function call
-# print(fun_split("Hello! It’s me again!"))
-print(fun_split(""))
+print("fun_split({})".format(strInput))
+print(">> ",fun_split(strInput))
+# print(fun_split(""))

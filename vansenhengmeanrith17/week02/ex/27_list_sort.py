@@ -22,6 +22,6 @@ def list_sort(a):
     # sorted(a)
     return a
 
-# Display
+# Display and function call
 print("list_sort({})".format(A))
 print(">> ",list_sort(A))

@@ -24,18 +24,21 @@ import time
 
 # Declaring variables
 A = 5
-# A = -20
+# A = ""
 
 # Defining functions
-def time_list(a):
+def time_list(a) :
     timeList = []
+    i = 0
     a = str(a)
     if a.isdigit():
-        for i in range(int(a)): 
+        while i < int(a) :
             timeList.append(str(datetime.datetime.today().strftime("%H:%M:%S")))
             time.sleep(1)
+            i +=1
         return timeList
     else:
+        # Return empty list
         return []
     
 # Display

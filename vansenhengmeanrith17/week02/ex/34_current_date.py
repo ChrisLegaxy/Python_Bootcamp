@@ -22,6 +22,6 @@ def current_date():
     return str(datetime.date.today())
     # return str(datetime.datetime.today().strftime("%Y-%m-%d"))
     
-# Display
+# Display and function call
 print("current_date()")
 print(">> ",current_date())

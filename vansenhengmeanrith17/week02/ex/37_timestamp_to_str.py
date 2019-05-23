@@ -25,15 +25,16 @@ timeStamp = 1623646780
 
 # Defining functions
 def timestamp_to_str(timeStamp):
+    # Convert timestamp to string then check if it's a digit 
     timeStamp = str(timeStamp)
     if timeStamp.isdigit():
         return datetime.datetime.fromtimestamp(int(timeStamp))
     else:
         return 0
 
-# Display
+# Display and function call
 print("timestamp_to_str({})".format(timeStamp))
 if timestamp_to_str(timeStamp) == 0:
-    print("Your timestamp is not valid")
+    print(">> Your timestamp is not valid")
 else:
-    print(timestamp_to_str(timeStamp))
+    print(">> ",timestamp_to_str(timeStamp))

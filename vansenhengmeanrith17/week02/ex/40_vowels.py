@@ -17,22 +17,32 @@ stringInput = "what is that ?"
 
 # Defining functions
 def vowels(stringInput) :
+    # Declaring local variables
     vowelsCount = 0
     vowelsInput = ""
     notVowelsInput = ""
+    
+    # Iterate through each character in string input
     for char in stringInput :
+        # Check if the character is vowel
         if char in listOfVowels :
             vowelsCount += 1
             vowelsInput += char
+        # Ignore white space
         elif char != " " :
             notVowelsInput += char
 
+    # If there's no vowel return 0
     if vowelsCount == 0 :
         return 0
-    
-    print(vowelsCount)
-    print(vowelsInput)
-    print(notVowelsInput.upper())
+    else:
+        print(vowelsCount)
+        print(vowelsInput)
+        print(notVowelsInput.upper())
+        return vowelsCount
 
-if vowels(stringInput) == 0:
+numberOfVowels = vowels(stringInput)
+if numberOfVowels == 0:
     print("NO VOWELS")
+else:
+    print(numberOfVowels)
