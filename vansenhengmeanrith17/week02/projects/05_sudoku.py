@@ -8,7 +8,7 @@
 """
 
 # Declaring variables
-board = [
+my_board = [
     [5, 3, 4, 6, 7, 8, 9, 1, 2],
     [6, 7, 2, 1, 9, 5, 3, 4, 8],
     [1, 9, 8, 3, 4, 2, 5, 6, 7],
@@ -46,7 +46,7 @@ def check_board(board):
     
     return check_if_the_board_is_correct
     
-def check_unique_row():
+def check_unique_row(board):
     check_if_row_is_unique = True
     unique_row = []
     if check_board(board):
@@ -63,11 +63,11 @@ def check_unique_row():
 
     return check_if_row_is_unique
 
-def check_unique_column():
+def check_unique_column(board):
     check_if_column_is_unique = True
     column_list = []
     unique_column = []
-    if check_unique_row():
+    if check_unique_row(board):
         for x in range(len(board)):
             for i in board:
                 column_list.append(i[x])
@@ -84,7 +84,7 @@ def check_unique_column():
     
     return check_if_column_is_unique
 
-def generate_region():
+def generate_region(board):
     rank = []
     rank_start = 0
     rank_stop = 3
@@ -93,9 +93,10 @@ def generate_region():
     stop = 3
     each_region = []
     all_region = []
+    i = 0
 
-    if check_unique_column():
-        for i in range(3):
+    if check_unique_column(board):
+        while i < 3:
             rank = board[rank_start:rank_stop]
             for j in range(len(rank)):
                 for k in rank:
@@ -110,14 +111,15 @@ def generate_region():
             stop = 3
             rank_start = rank_stop
             rank_stop += 3
+            i += 1
         return all_region
     else:
         return []
         
-def check_unique_region():
+def check_unique_region(board):
     check_if_each_region_is_unique = True
     unique_region = []
-    for i in generate_region():
+    for i in generate_region(board):
         for j in i:
             if j not in unique_region:
                 unique_region.append(j)
@@ -128,11 +130,11 @@ def check_unique_region():
 
 def sudoku(board):
     if check_board(board):
-        if check_unique_row() and check_unique_column() and check_unique_region():
+        if check_unique_row(board) and check_unique_column(board) and check_unique_region(board):
             return "Finished"
         else:
             return "Not Finished"
     else:
         return "Invalid Format"
 
-print(sudoku(board))
+print(sudoku(my_board))
