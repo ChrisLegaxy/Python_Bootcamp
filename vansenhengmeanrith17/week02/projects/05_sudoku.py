@@ -41,6 +41,8 @@ def check_board(board):
                 check_if_the_board_is_correct = False
             if check_if_the_board_is_correct == False:
                 break
+    else:
+        check_if_the_board_is_correct = False
     
     return check_if_the_board_is_correct
     
