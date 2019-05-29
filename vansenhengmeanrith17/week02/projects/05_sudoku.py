@@ -94,11 +94,12 @@ def generate_region(board):
     each_region = []
     all_region = []
     i = 0
+    j = 0
 
     if check_unique_column(board):
         while i < 3:
             rank = board[rank_start:rank_stop]
-            for j in range(len(rank)):
+            while j < range(len(rank)):
                 for k in rank:
                     temp = k[start:stop]
                     for l in temp:
@@ -107,6 +108,7 @@ def generate_region(board):
                 each_region = []
                 start = stop
                 stop += 3
+                j += 1
             start = 0
             stop = 3
             rank_start = rank_stop

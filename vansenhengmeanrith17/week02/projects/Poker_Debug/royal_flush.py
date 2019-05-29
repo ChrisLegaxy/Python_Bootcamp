@@ -1,7 +1,3 @@
-cards = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"]
-cards_suite = ["S", "H", "D", "C"]
-player_one_cards = "AH KH QH JH TH"
-player_two_cards = "AS KS TS 2H 3H"
 player_cards = "AH KH QH JH TH"
 
 def covert_player_cards(player_cards):
@@ -38,6 +34,26 @@ def covert_player_cards(player_cards):
 
     return players_cards_coverted
 
+def flush(player_cards):
+    player_cards = covert_player_cards(player_cards)
+    player_cards_split = str(player_cards).split(" ")
+    unique_suit = []
+    rank = 0
+
+    for i in player_cards_split:
+        if len(i) == 3:
+            if i[2] not in unique_suit:
+                unique_suit.append(i[2])
+        elif i[1] not in unique_suit:
+            unique_suit.append(i[1])
+
+    if len(unique_suit) == 1:
+        rank = 6
+    else:
+        rank = 0
+    
+    return rank
+
 def generate_cards_without_suits(player_cards):
     player_cards_split = str(player_cards).split(" ")
     player_cards_without_suits = []
@@ -50,65 +66,41 @@ def generate_cards_without_suits(player_cards):
 
     return player_cards_without_suits
 
-def royal_flush(player_cards):
-    player_cards = covert_player_cards(player_cards)
-    royal_flush = [10, 11, 12, 13, 14]
-    rank = 0
+player_cards = covert_player_cards(player_cards)
+royal_flush = [10, 11, 12, 13, 14]
+rank = 0
 
-    if flush(player_cards) == 6:
-        if sorted(generate_cards_without_suits(player_cards)) == royal_flush:
-            rank = 10
-    
-    return rank
+if flush(player_cards) == 6:
+    if sorted(generate_cards_without_suits(player_cards)) == royal_flush:
+        rank = 10
 
-def flush(player_cards):
-    # player_cards = covert_player_cards(player_cards)
-    player_cards_split = str(player_cards).split(" ")
-    unique_suit = []
-    rank = 0
-
-    for i in player_cards_split:
-        if len(i) == 3:
-            if i[2] not in unique_suit:
-                unique_suit.append(i[2])
-        elif i[1] not in unique_suit:
-            unique_suit.append(i[1])
-    
-    if len(unique_suit) == 1:
-        rank = 6
-    
-    return rank
-
-def straight(player_cards):
-    player_cards = covert_player_cards(player_cards)
-    
-    straight = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-    straight_check = []
-    start = 0
-    stop = 5
-    rank = 0
-        
-    for i in range(len(straight)):
-        start = i
-        straight_check = straight[start:stop]
-        if sorted(generate_cards_without_suits(player_cards)) == straight_check:
-            rank = 5
-            break
-        stop += 1
-    
-    return rank
-
-def player_rank(player_cards):
-    player_rank = 0
-    ranking_system = [royal_flush, flush, straight]
-
-    for i in ranking_system:
-        player_rank = i(player_cards)
-        if player_rank != 0:
-            break
-    
-    return player_rank
-
-print(royal_flush(player_cards))
+print(covert_player_cards(player_cards))
 print(flush(player_cards))
-print(player_rank(player_cards))
+print(rank)
+print(sorted(generate_cards_without_suits(player_cards)))
+print(royal_flush)
+
+# print(rank)
+
+# def royal_flush(player_cards):
+#     player_cards_split = str(player_cards).split(" ")
+#     royal_flush = ["T", "J", "Q", "K", "A"]
+#     player_cards_without_suits = []
+#     unique_suit = []
+#     rank = None
+    
+#     for i in player_cards_split:
+#         player_cards_without_suits.append(i[0])
+
+#     if sorted(player_cards_without_suits) == sorted(royal_flush):
+#         for i in player_cards_split:
+#             if i[1] not in unique_suit:
+#                 unique_suit.append(i[1])
+#         if len(unique_suit) != 1:
+#             rank = 0
+#         else:
+#             rank = 10
+#     else: 
+#         rank = 0
+
+#    # return rank

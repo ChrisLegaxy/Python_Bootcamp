@@ -1,9 +1,3 @@
-cards = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"]
-cards_suite = ["S", "H", "D", "C"]
-player_one_cards = "AH KH QH JH TH"
-player_two_cards = "AS KS TS 2H 3H"
-player_cards = "AH KH QH JH TH"
-
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
     player_cards_without_suits = []
@@ -62,7 +56,6 @@ def royal_flush(player_cards):
     return rank
 
 def flush(player_cards):
-    # player_cards = covert_player_cards(player_cards)
     player_cards_split = str(player_cards).split(" ")
     unique_suit = []
     rank = 0
@@ -98,17 +91,16 @@ def straight(player_cards):
     
     return rank
 
-def player_rank(player_cards):
-    player_rank = 0
-    ranking_system = [royal_flush, flush, straight]
+player_cards = "AH KH QH JH TH"
 
-    for i in ranking_system:
-        player_rank = i(player_cards)
-        if player_rank != 0:
-            break
-    
-    return player_rank
+player_cards = covert_player_cards(player_cards)
+player_rank = 0
+ranking_system = [royal_flush, flush, straight]
 
-print(royal_flush(player_cards))
-print(flush(player_cards))
-print(player_rank(player_cards))
+for i in ranking_system:
+    player_rank = i(player_cards)
+    if player_rank != 0:
+        break
+        
+
+print(player_rank)
