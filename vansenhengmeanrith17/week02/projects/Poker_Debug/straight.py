@@ -1,4 +1,5 @@
 player_cards = "AH KH QH JH TH"
+player_cards = "2H 3H 4H 5H 6H"
 
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
@@ -69,7 +70,9 @@ stop = 5
 rank = 0
 
 player_cards = covert_player_cards(player_cards)
-    
+
+print(player_cards)
+
 for i in range(len(straight)):
     start = i 
     straight_check = straight[start:stop]

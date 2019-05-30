@@ -1,5 +1,6 @@
 player_cards = "AH KH QH JH TH"
 player_cards = "14H 13H 12H 11H 10H"
+player_cards = "2H 3H 4H 5H 6H"
 player_cards_split = str(player_cards).split(" ")
 player_cards_without_suits = []
 player_cards_suits_only = []

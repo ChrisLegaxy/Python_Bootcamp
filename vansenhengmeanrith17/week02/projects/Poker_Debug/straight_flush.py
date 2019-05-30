@@ -1,9 +1,6 @@
-cards = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"]
-cards_suite = ["S", "H", "D", "C"]
-player_one_cards = "AH KH QH JH TH"
-player_two_cards = "AS KS TS 2H 3H"
 player_cards = "AH KH QH JH TH"
 player_cards = "2H 3H 4H 5H 6H"
+rank = 0
 
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
@@ -49,45 +46,8 @@ def generate_cards_without_suits(player_cards):
         else:
             player_cards_without_suits.append(int(str(i[0])+str(i[1])))
 
+
     return player_cards_without_suits
-
-def royal_flush(player_cards):
-    player_cards = covert_player_cards(player_cards)
-    royal_flush = [10, 11, 12, 13, 14]
-    rank = 0
-
-    if flush(player_cards) == 6:
-        if sorted(generate_cards_without_suits(player_cards)) == royal_flush:
-            rank = 10
-    
-    return rank
-
-def straight_flush(player_cards):
-    rank = 0
-
-    if flush(player_cards) == 6:
-        if straight(player_cards) == 5:
-            rank = 9
-
-    return rank
-
-def four_of_a_kind(player_cards):
-    unique_cards = []
-    rank = 0
-
-    player_cards = covert_player_cards(player_cards)
-    split_cards = player_cards.split(" ")
-    for i in split_cards:
-        if i not in unique_cards:
-            unique_cards.append(i)
-
-    if len(unique_cards) == 5:
-        for i in generate_cards_without_suits(player_cards):
-            if generate_cards_without_suits(player_cards).count(i) == 4:
-                rank = 8
-                break
-    
-    return rank
 
 def flush(player_cards):
     # player_cards = covert_player_cards(player_cards)
@@ -126,23 +86,10 @@ def straight(player_cards):
     
     return rank
 
-def player_rank(player_cards):
-    player_rank = 0
-    ranking_system = [
-        royal_flush, straight_flush, 
-        four_of_a_kind, flush, straight
-        ]
+if flush(player_cards) == 6:
+    if straight(player_cards) == 5:
+        rank = 9
 
-    for i in ranking_system:
-        player_rank = i(player_cards)
-        if player_rank != 0:
-            break
-    
-    return player_rank
+print(rank)
 
-print(four_of_a_kind(player_cards))
-print(royal_flush(player_cards))
-print(straight_flush(player_cards))
-print(straight(player_cards))
-print(flush(player_cards))
-print(player_rank(player_cards))
+
