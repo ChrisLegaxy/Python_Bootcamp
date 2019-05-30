@@ -1,5 +1,5 @@
 player_cards = "AH KH QH JH TH"
-player_cards = "TS TH TC TD 3H"
+player_cards = "TS TH 4H 4S 3H"
 
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
@@ -50,6 +50,7 @@ def generate_cards_without_suits(player_cards):
 
 unique_cards = []
 rank = 0
+count_pairs = 0
 
 player_cards = covert_player_cards(player_cards)
 split_cards = player_cards.split(" ")
@@ -65,17 +66,9 @@ for i in generate_cards_without_suits(player_cards):
 
 if len(unique_cards) == 5:
     for i in unique_cards_without_suits:
-        if generate_cards_without_suits(player_cards).count(i) == 4:
-            rank = 8
-            break
-
-
-# player_cards = generate_cards_without_suits(player_cards)
-# rank = 0
-
-# for i in player_cards:
-#     if player_cards.count(i) == 4:
-#         rank = 8
-#         break
+        if generate_cards_without_suits(player_cards).count(i) == 2:
+            count_pairs += 1
+    if count_pairs == 2:
+        rank = 3
 
 print(rank)

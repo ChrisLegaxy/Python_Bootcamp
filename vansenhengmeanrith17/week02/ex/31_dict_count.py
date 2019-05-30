@@ -32,7 +32,7 @@ def dict_count(a):
     # Iterate through each element in unique list
     for x in uniqueList:
         # Assign key in dictionary equal to the element in unique list then use that to count the number of occurence in list(a)
-        dictCount[x] = A.count(x)
+        dictCount[x] = a.count(x)
     
     # Return a dictionary
     return dictCount

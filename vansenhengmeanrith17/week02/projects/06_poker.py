@@ -2,8 +2,8 @@ cards = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"]
 cards_suite = ["S", "H", "D", "C"]
 player_one_cards = "AH KH QH JH TH"
 player_two_cards = "AS KS TS 2H 3H"
-player_cards = "AH KH QH JH TH"
-player_cards = "2H 3H 4H 5H 6H"
+player_one_cards = "AH AS AD AC TH"
+player_two_cards = "8S 8H 8D 8C 2H"
 
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
@@ -77,15 +77,30 @@ def four_of_a_kind(player_cards):
 
     player_cards = covert_player_cards(player_cards)
     split_cards = player_cards.split(" ")
+    unique_cards_without_suits = []
+
     for i in split_cards:
         if i not in unique_cards:
             unique_cards.append(i)
 
+    for i in generate_cards_without_suits(player_cards):
+        if i not in unique_cards_without_suits:
+            unique_cards_without_suits.append(i)
+
     if len(unique_cards) == 5:
-        for i in generate_cards_without_suits(player_cards):
+        for i in unique_cards_without_suits:
             if generate_cards_without_suits(player_cards).count(i) == 4:
                 rank = 8
                 break
+    
+    return rank
+
+def full_house(player_cards):
+    rank = 0
+
+    if three_of_a_kind(player_cards) == 4:
+        if one_pair(player_cards) == 2:
+            rank = 7
     
     return rank
 
@@ -126,11 +141,87 @@ def straight(player_cards):
     
     return rank
 
+def three_of_a_kind(player_cards):
+    unique_cards = []
+    rank = 0
+
+    player_cards = covert_player_cards(player_cards)
+    split_cards = player_cards.split(" ")
+    unique_cards_without_suits = []
+
+    for i in split_cards:
+        if i not in unique_cards:
+            unique_cards.append(i)
+
+    for i in generate_cards_without_suits(player_cards):
+        if i not in unique_cards_without_suits:
+            unique_cards_without_suits.append(i)
+
+    if len(unique_cards) == 5:
+        for i in unique_cards_without_suits:
+            if generate_cards_without_suits(player_cards).count(i) == 3:
+                rank = 4
+                break
+    
+    return rank
+
+def two_pairs(player_cards):
+    unique_cards = []
+    rank = 0
+    count_pairs = 0
+
+    player_cards = covert_player_cards(player_cards)
+    split_cards = player_cards.split(" ")
+    unique_cards_without_suits = []
+
+    for i in split_cards:
+        if i not in unique_cards:
+            unique_cards.append(i)
+
+    for i in generate_cards_without_suits(player_cards):
+        if i not in unique_cards_without_suits:
+            unique_cards_without_suits.append(i)
+
+    if len(unique_cards) == 5:
+        for i in unique_cards_without_suits:
+            if generate_cards_without_suits(player_cards).count(i) == 2:
+                count_pairs += 1
+        if count_pairs == 2:
+            rank = 3
+    
+    return rank
+
+def one_pair(player_cards):
+    unique_cards = []
+    rank = 0
+
+    player_cards = covert_player_cards(player_cards)
+    split_cards = player_cards.split(" ")
+    unique_cards_without_suits = []
+
+    for i in split_cards:
+        if i not in unique_cards:
+            unique_cards.append(i)
+
+    for i in generate_cards_without_suits(player_cards):
+        if i not in unique_cards_without_suits:
+            unique_cards_without_suits.append(i)
+
+    if len(unique_cards) == 5:
+        for i in unique_cards_without_suits:
+            if generate_cards_without_suits(player_cards).count(i) == 2:
+                rank = 2
+                break
+    
+    return rank
+
 def player_rank(player_cards):
     player_rank = 0
     ranking_system = [
         royal_flush, straight_flush, 
-        four_of_a_kind, flush, straight
+        four_of_a_kind, full_house,
+        flush, straight, three_of_a_kind,
+        two_pairs, one_pair
         ]
 
     for i in ranking_system:
@@ -138,11 +229,20 @@ def player_rank(player_cards):
         if player_rank != 0:
             break
     
+    if player_rank == 0:
+        player_rank = 1
+    
     return player_rank
 
-print(four_of_a_kind(player_cards))
-print(royal_flush(player_cards))
-print(straight_flush(player_cards))
-print(straight(player_cards))
-print(flush(player_cards))
-print(player_rank(player_cards))
+def poker_hand(player_one_cards, player_two_cards):
+    player_one_rank = player_rank(player_one_cards)
+    player_two_rank = player_rank(player_two_cards)
+
+    if player_one_rank == player_two_rank:
+        return "Tie"
+    elif player_one_rank > player_two_rank:
+        return "Player One WIN"
+    elif player_two_rank > player_one_rank:
+        return "Player Two WIN"
+
+print(poker_hand(player_one_cards,player_two_cards))

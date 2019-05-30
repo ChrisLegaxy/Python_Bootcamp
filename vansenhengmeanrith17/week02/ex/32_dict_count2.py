@@ -38,8 +38,8 @@ def dict_count2(a):
     # Iterate through each element in unique list
     for x in uniqueList:
         # Assign key in dictionary equal to the element in unique list then use that to count the number of occurence in list(a)
-        dictCount[x] = A.count(x)
-        countTotal += int(A.count(x))
+        dictCount[x] = a.count(x)
+        countTotal += int(a.count(x))
 
     # key = lambda (k ,v) : k, since kv[0], 0 = key, 1 = value
     # The sorted elements will be in a list of tuples
@@ -47,13 +47,13 @@ def dict_count2(a):
     
     # Check if the list is empty or check the first key of the dictionary is empty
     if bool(dictCount) == True and uniqueList[0]!="": # list(dictCount.keys())[0]!=""
-        return str(dictCountSortedByKey) + "\n>> TOTAL: " + str(countTotal)
+        print(">> TOTAL: " + str(countTotal))
+        return dictCountSortedByKey
     else:
+        print("Your string is empty.")
         return []
     
 # Display and function call
-if not dict_count2(A):
-    print("Your string is empty.")
-else:
-    print("dict_count2({})".format(A))
-    print(">>",dict_count2(A))
+
+print("dict_count2({})".format(A))
+print(">>",dict_count2(A))
