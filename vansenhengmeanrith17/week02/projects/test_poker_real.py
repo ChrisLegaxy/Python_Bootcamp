@@ -1,11 +1,4 @@
-cards = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"]
-cards_suite = ["S", "H", "D", "C"]
-player_one_cards = "AH KH QH JH TH"
-player_two_cards = "AS KS TS 2H 3H"
-player_one_cards = "AH AS AD AC TH"
-player_two_cards = "8S 8H 8D 8C 2H"
-player_one_cards = "2S AH 2H AS AC"
-player_two_cards = "JS JD JC JH AD"
+import random
 
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
@@ -240,7 +233,14 @@ def poker_hand(player_one_cards, player_two_cards):
     player_one_rank = player_rank(player_one_cards)
     player_two_rank = player_rank(player_two_cards)
 
-    print(str(player_one_rank)+" "+str(player_two_rank))
+    if player_one_rank == player_two_rank:
+        return "Tie"
+    elif player_one_rank > player_two_rank:
+        return "Player 1 WIN"
+    elif player_two_rank > player_one_rank:
+        return "Player 2 WIN"
+    player_one_rank = player_rank(player_one_cards)
+    player_two_rank = player_rank(player_two_cards)
 
     if player_one_rank == player_two_rank:
         return "Tie"
@@ -249,6 +249,34 @@ def poker_hand(player_one_cards, player_two_cards):
     elif player_two_rank > player_one_rank:
         return "Player 2 WIN"
 
-print(four_of_a_kind(player_two_cards))
 
-print(poker_hand(player_one_cards,player_two_cards))
+list = [
+    ("2H 3H 4H 5H 6H", "KS AS TS QS JS", "Player 2 WIN"),
+    ("2H 3H 4H 5H 6H", "AS AD AC AH JD", "Player 1 WIN"),
+    ("AS AH 2H AD AC", "JS JD JC JH 3D", "Player 1 WIN"),
+    ("2S AH 2H AS AC", "JS JD JC JH AD", "Player 2 WIN"),
+    ("2S AH 2H AS AC", "2H 3H 5H 6H 7H", "Player 1 WIN"),
+    ("AS 3S 4S 8S 2S", "2H 3H 5H 6H 7H", "Player 1 WIN"),
+    ("2H 3H 5H 6H 7H", "2S 3H 4H 5S 6C", "Player 1 WIN"),
+    ("2S 3H 4H 5S 6C", "3D 4C 5H 6H 2S", "Tie"),
+    ("2S 3H 4H 5S 6C", "AH AC 5H 6H AS", "Player 1 WIN"),
+    ("2S 2H 4H 5S 4C", "AH AC 5H 6H AS", "Player 2 WIN"),
+    ("2S 2H 4H 5S 4C", "AH AC 5H 6H 7S", "Player 1 WIN"),
+    ("6S AD 7H 4S AS", "AH AC 5H 6H 7S", "Player 2 WIN"),
+    ("2S AH 4H 5S KC", "AH AC 5H 6H 7S", "Player 2 WIN"),
+    ("2S 3H 6H 7S 9C", "7H 3C TH 6H 9S", "Player 2 WIN"),
+    ("4S 5H 6H TS AC", "3S 5H 6H TS AC", "Player 1 WIN"),
+    ("2S AH 4H 5S 6C", "AD 4C 5H 6H 2C", "Tie")
+]
+
+def auto_check(list):
+    for elem in list:
+        print("================= ================")
+        print("TESTING: poker_real('" + elem[0] + "','" + elem[1] + "')")
+        result = poker_hand(elem[0], elem[1])
+        if result != elem[2]:
+            print("KO : Should return [" +  elem[2] + "] instead of [" + result + "]")
+        else:
+            print("OK")
+
+auto_check(list)

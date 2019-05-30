@@ -55,6 +55,7 @@ def flush(player_cards):
     return rank
 
 def generate_cards_without_suits(player_cards):
+    player_cards = covert_player_cards(player_cards)
     player_cards_split = str(player_cards).split(" ")
     player_cards_without_suits = []
 
@@ -66,7 +67,7 @@ def generate_cards_without_suits(player_cards):
 
     return player_cards_without_suits
 
-player_cards = covert_player_cards(player_cards)
+# player_cards = covert_player_cards(player_cards)
 royal_flush = [10, 11, 12, 13, 14]
 rank = 0
 

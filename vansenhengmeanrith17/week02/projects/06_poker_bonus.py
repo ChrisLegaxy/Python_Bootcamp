@@ -4,8 +4,7 @@ player_one_cards = "AH KH QH JH TH"
 player_two_cards = "AS KS TS 2H 3H"
 player_one_cards = "AH AS AD AC TH"
 player_two_cards = "8S 8H 8D 8C 2H"
-player_one_cards = "2S AH 2H AS AC"
-player_two_cards = "JS JD JC JH AD"
+player_cards = "AH KH QH JH TH"
 
 def covert_player_cards(player_cards):
     player_cards_split = str(player_cards).split(" ")
@@ -240,15 +239,11 @@ def poker_hand(player_one_cards, player_two_cards):
     player_one_rank = player_rank(player_one_cards)
     player_two_rank = player_rank(player_two_cards)
 
-    print(str(player_one_rank)+" "+str(player_two_rank))
-
     if player_one_rank == player_two_rank:
         return "Tie"
     elif player_one_rank > player_two_rank:
         return "Player 1 WIN"
     elif player_two_rank > player_one_rank:
         return "Player 2 WIN"
-
-print(four_of_a_kind(player_two_cards))
 
 print(poker_hand(player_one_cards,player_two_cards))

@@ -9,7 +9,7 @@
 
 #Declare variables
 text = "Welcome to Kirirom: Kirirom Institute of Technology and Kirirom National Parc. To contact us, send a message to us!"
-# text = "//can't cant Cant can't"
+text = "//can't cant Cant can't"
 # text = ". ??? // ####### // // ???"
 # text = ""
 
