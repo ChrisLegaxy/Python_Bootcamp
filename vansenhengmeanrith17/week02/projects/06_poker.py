@@ -240,8 +240,6 @@ def poker_hand(player_one_cards, player_two_cards):
     player_one_rank = player_rank(player_one_cards)
     player_two_rank = player_rank(player_two_cards)
 
-    print(str(player_one_rank)+" "+str(player_two_rank))
-
     if player_one_rank == player_two_rank:
         return "Tie"
     elif player_one_rank > player_two_rank:
@@ -249,6 +247,4 @@ def poker_hand(player_one_cards, player_two_cards):
     elif player_two_rank > player_one_rank:
         return "Player 2 WIN"
 
-print(four_of_a_kind(player_two_cards))
-
-print(poker_hand(player_one_cards,player_two_cards))
+# print(poker_hand(player_one_cards,player_two_cards))
