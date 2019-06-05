@@ -24,5 +24,3 @@ def current_folder():
         dir_file_list.append((i, 'File'))
     
     return dir_file_list
-
-print(current_folder())
