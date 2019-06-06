@@ -1,4 +1,4 @@
 import os
 
 def current_path():
-    return os.getcwd()
+    return str(os.path.abspath(os.getcwd()))

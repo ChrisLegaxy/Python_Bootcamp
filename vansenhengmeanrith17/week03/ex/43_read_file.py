@@ -1,13 +1,11 @@
 import os
 
 def read_file(file_name):
-    path = os.getcwd()
-    check_current_item = path + "\\" + file_name
-    if os.path.isfile(check_current_item):
-        f = open(check_current_item, 'r')
+    if os.path.exists(file_name) and os.path.isfile(file_name):
+        f = open(file_name, 'r')
         data = f.read()
         f.close
-        return data
+        return str(data)
     else: 
         print("Invalid FILENAME")
         return []
